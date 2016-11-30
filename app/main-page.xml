@@ -1,0 +1,61 @@
+<!--
+The markup in NativeScript apps contains a series of user interface components, each
+of which NativeScript renders with a platform-specific iOS or Android native control.
+You can find a full list of user interface components you can use in your app at
+https://docs.nativescript.org/ui/components.
+-->
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo">
+    <!--
+    The StackLayout stacks UI components on the screen—either vertically or horizontally.
+    In this case, the StackLayout does vertical stacking; you can change the stacking to
+    horizontal by applying a orientation="horizontal" attribute to the <StackLayout> element.
+    You can learn more about NativeScript layouts at
+    https://docs.nativescript.org/ui/layout-containers.
+
+    These components make use of several CSS class names that are part of the NativeScript
+    core theme, such as p-20, btn, h2, and text-center. You can view a full list of the
+    class names available for styling your app at https://docs.nativescript.org/ui/theme.
+    -->
+    <StackLayout>
+        <Label text="{{ fps }}" textWrap="true" class="h2 text-center" />
+        <GridLayout rows="auto" columns="*" backgroundColor="white">
+            <StackLayout row="0" col="0">
+                <GridLayout rows="*, *" columns="*, *" id="images-grid">
+                    <Image src="{{ img1 }}" stretch ="aspectFit" row="0"    col="0" class="img-framed" id="1" />
+                    <Image src="{{ img2 }}" stretch ="aspectFit" row="0"     col="1" class="img-framed" id="2" />
+                    <Image src="{{ img3 }}" stretch ="aspectFit" row="1"    col="0" class="img-framed" id="3" />
+                </GridLayout>
+            </StackLayout>
+        </GridLayout>
+        <StackLayout class="p-20">
+            <GridLayout rows="auto" columns="*, auto">
+                <Button text="Process on main" tap=" {{ processOnMain }}" row="0" col="0"/>
+                <Button text="Reset" class="reset" tap="{{ reset }}" row="0" col="1"/>
+            </GridLayout>
+            <GridLayout rows="auto" columns="*, *">
+                <Button text="1 Worker" tap="{{ processOneWorker }}" row="0" col="0"/>
+                <Button text="Multiple workers" tap="{{ processMultiWorker }}" row="0" col="1"/>
+            </GridLayout>
+        </StackLayout>
+        <GridLayout rows="*, *" columns="*, *">
+            <StackLayout row="0" col="0">
+                <GridLayout rows="*" columns="*, 50">
+                    <Label text="Image 1 Processed: " row="0" col="0" />
+                    <Label text="{{ img1Proc }}" row="0" col="1" id="img-1-proc" />
+                </GridLayout>
+            </StackLayout>
+            <StackLayout row="0" col="1">
+                <GridLayout rows="*" columns="*, 50">
+                    <Label text="Image 2 Processed: " row="0" col="0" />
+                    <Label text="{{ img2Proc }}" row="0" col="1" id="img-2-proc" />
+                </GridLayout>
+            </StackLayout>
+            <StackLayout  row="1" col="0">
+                <GridLayout rows="*" columns="*, 50">
+                    <Label text="Image 3 Processed: " row="0" col="0" />
+                    <Label text="{{ img3Proc }}" row="0" col="1" id="img-3-proc" />
+                </GridLayout>
+            </StackLayout>
+        </GridLayout>
+    </StackLayout>
+</Page>
